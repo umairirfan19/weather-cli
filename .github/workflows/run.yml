@@ -4,21 +4,29 @@ on:
   push:
     branches: [ "main" ]
   workflow_dispatch:
+    inputs:
+      city:
+        description: "City to fetch"
+        required: true
+        default: "Toronto"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '21'
+
       - name: Compile
         run: |
           rm -rf out && mkdir -p out
           javac -d out $(find src -name "*.java")
-      - name: Run sample (Toronto)
+
+      - name: Run sample
         run: |
-          java -cp out com.umair.weathercli.App "Toronto"
+          java -cp out com.umair.weathercli.App "${{ github.event.inputs.city }}"
