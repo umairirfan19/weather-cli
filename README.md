@@ -1,5 +1,4 @@
-[![Java CI](https://github.com/<your-username>/weather-cli/actions/workflows/run.yml/badge.svg)](https://github.com/<your-username>/weather-cli/actions/workflows/run.yml)
-# Weather CLI (Java)
+[![Java CI](https://github.com/umairirfan19/weather-cli/actions/workflows/run.yml/badge.svg)](https://github.com/umairirfan19/weather-cli/actions/workflows/run.yml)
 
 A minimal, dependency-free Weather CLI that lets you check the current weather for **any city**:
 
