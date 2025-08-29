@@ -1,0 +1,24 @@
+name: Java CI (build & run Weather CLI)
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - name: Compile
+        run: |
+          rm -rf out && mkdir -p out
+          javac -d out $(find src -name "*.java")
+      - name: Run sample (Toronto)
+        run: |
+          java -cp out com.umair.weathercli.App "Toronto"
